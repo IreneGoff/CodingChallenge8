@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
 
-        // Validate that all fields are filled out
+        // Validate that all fields are filled 
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const eventDate = document.getElementById('eventDate').value;
@@ -15,3 +15,17 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Please fill out all fields.');
             return;
         }
+
+        // Store meal preferences
+        const mealPreferencesArray = Array.from(mealPreferences).map(input => input.value);
+
+        // Display registration details
+        registrationDetails.innerHTML = `
+            <h2>Registration Details</h2>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Event Date:</strong> ${eventDate}</p>
+            <p><strong>Meal Preferences:</strong> ${mealPreferencesArray.join(', ')}</p>
+        `;
+    });
+});
